@@ -1,0 +1,49 @@
+import random
+def hangman():
+    user = input("What is your name?")
+    print ("hello", user)
+    print ("You are now playing hangman. There are no hints or categories just start guessing. You have 6 chances, Good luck!")
+    words = ('soccer','pancakes', 'youtube', 'class', 'earphones')
+    randomchoice = random.choice(words)
+    print (randomchoice)
+    glist = list('_'*len(randomchoice))
+    print (glist)
+    turns = 6
+  
+    used= ''
+    mylist=[]
+    while turns > 0:
+      wrong = 0
+      for char in randomchoice:
+        if char in used:
+          print(char)
+        else:
+          print("_")
+          wrong += 1
+      if wrong == 0:
+        print ("Good job you won")
+      print
+      guess = input("guess: ")
+      used += guess
+      if guess not in randomchoice:
+        if guess in mylist:
+          print ("already guessed:", mylist)
+          print ("you still have", +turns, 'more tries')
+        else: 
+          mylist.append(guess)
+          turns -=1
+          if turns ==5:
+            print ("wrong")
+          elif turns == 4:
+            print ("wrong")
+          elif turns == 3:
+            print ("wrong")
+          elif turns == 2:
+            print ("wrong")
+          elif turns == 1:
+            print ("wrong")
+          print("you have", + turns, 'more tries')
+
+        if turns == 0:
+          print ("nah bruh")
+          print ("The word was", randomchoice)
